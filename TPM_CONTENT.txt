@@ -1,0 +1,66 @@
+•	Customer —< Books >— Booking   1..M
+
+•	Booking —< Contains >— TourPackage 1..1
+
+•	Booking —< Has >— Payment 1..M
+
+•	TourPackage —< Includes >— Guide 1..M
+
+•	TourPackage —< Includes >— Hotel 1..M
+
+•	TourPackage —< Uses >— Transport M..N
+
+-----------------------------------------------------------------
+1.	Customer
+o	CustomerID (PK)
+o	Name
+o	Email
+o	Phone
+o	Address
+
+2.	TourPackage
+o	PackageID (PK)
+o	PackageName
+o	Source
+o	Destination
+o	Duration (in days)
+o	Cost
+o	Description
+
+3.	Booking
+o	BookingID (PK)
+o	BookingDate
+o	NoOfPersons
+o	TotalCost
+o	Status (Confirmed, Cancelled, Pending)
+
+
+4.	Payment
+o	PaymentID (PK)
+o	PaymentDate
+o	Amount
+o	PaymentMode (Credit, Debit, UPI, etc.)
+o	PaymentStatus
+
+5.	Guide
+o	GuideID (PK)
+o	Name
+o	Contact
+o	Language
+o	Experience (years)
+
+
+6.	Hotel
+o	HotelID (PK)
+o	HotelName
+o	Location
+o	Rating
+o	ContactInfo
+
+7.	Transport
+o	TransportID (PK)
+o	VehicleType (Bus, Car, Van, etc.)
+o	Capacity
+o	Company
+o	ContactInfo
+
