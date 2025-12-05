@@ -1,0 +1,43 @@
+create table department
+(did int primary key,
+dname varchar(10) not null);
+create table student
+(sid int primary key,
+sname varchar(20) not null,
+age int check(age>17),
+sub1 int,sub2 int,sub3 int,
+cname varchar(10) default "IARE",
+did int,
+foreign key(did) references 
+department(did) 
+on delete set null
+on update cascade );
+-- desc department;
+-- desc student;
+alter table student add sem varchar(5);
+alter table student modify sem varchar(10);
+alter table student rename column sem to semester;
+alter table student drop semester;
+-- desc student;
+insert into department values
+(66,"AIML"),(12,"IT"),(5,"CSE"),
+(67,"DS"),(62,"CS");
+-- select * from department;
+insert into student values
+(501,"mayuri",18,78,99,67,default,5);
+insert into student values
+(502,"balaji",18,78,91,67,default,5);
+insert into student values
+(503,"vanishka",18,78,97,67,default,5);
+insert into student values
+(6701,"trinayani",18,78,96,67,default,67);
+insert into student values
+(6702,"lahari",18,78,95,67,default,67);
+insert into student values
+(6703,"tripura",18,78,94,67,default,67);
+delete from department where did=5;
+update department set did=99 where did=67;
+-- select * from student;
+truncate table student;
+drop table student;
+desc student;

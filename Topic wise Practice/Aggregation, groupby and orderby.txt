@@ -1,0 +1,47 @@
+CREATE TABLE Sales (
+    SaleID INT PRIMARY KEY,
+    ProductName VARCHAR(50),
+    Category VARCHAR(30),
+    Quantity INT,
+    Price DECIMAL(10, 2),
+    SaleDate DATE
+);
+INSERT INTO Sales (SaleID, ProductName, Category, Quantity, Price, SaleDate) VALUES
+(1, 'Laptop', 'Electronics', 2, 50000, '2025-07-01'),
+(2, 'Mouse', 'Electronics', 5, 500, '2025-07-02'),
+(3, 'Shirt', 'Clothing', 3, 1000, '2025-07-01'),
+(4, 'Laptop', 'Electronics', 1, 50000, '2025-07-03'),
+(5, 'Jeans', 'Clothing', 2, 2000, '2025-07-03'),
+(6, 'Mouse', 'Electronics', 10, 500, '2025-07-04'),
+(7, 'Shirt', 'Clothing', 4, 1000, '2025-07-05'),
+(8, 'Laptop', 'Electronics', 1, 50000, '2025-07-06');
+select * from sales;
+-- Total quantity sold per product
+SELECT ProductName, SUM(Quantity) AS TotalSold
+FROM Sales
+GROUP BY ProductName;
+-- Total revenue per category
+SELECT Category, SUM(Quantity * Price) AS TotalRevenue
+FROM Sales
+GROUP BY Category;
+-- Average price per product
+SELECT ProductName, AVG(Price) AS AvgPrice
+FROM Sales
+GROUP BY ProductName;
+-- Count of sales per date
+SELECT SaleDate, COUNT(*) AS NumberOfSales
+FROM Sales
+GROUP BY SaleDate;
+-- Max and min quantity sold per product
+SELECT ProductName, MAX(Quantity) AS MaxQty, MIN(Quantity) AS MinQty
+FROM Sales
+GROUP BY ProductName;
+-- Find products with total quantity sold more than 5:
+SELECT ProductName, SUM(Quantity) AS TotalQty
+FROM Sales
+GROUP BY ProductName
+HAVING SUM(Quantity) > 5;
+-- order by examples
+select ProductName,quantity from sales order by quantity desc;
+select SaleDate,ProductName from sales order by saledate;
+
